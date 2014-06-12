@@ -1,0 +1,15 @@
+form {
+    margin: 0;
+}
+
+table {
+    border: 1px solid #808080;
+}
+
+input[type=submit] {
+    width: 60px;
+}
+
+.error {
+    color: #8b0000;
+}
