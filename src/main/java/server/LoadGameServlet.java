@@ -20,7 +20,7 @@ public class LoadGameServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserAccount user = (UserAccount) req.getSession().getAttribute("user");
         if (user == null) {
-            resp.sendRedirect("/chessonline/login");
+            resp.sendRedirect("/login");
         } else {
             List<ChessGame.PackedChessGame> games = Scope.getSavedGames(req.getSession());
             String action = req.getParameter("action");
@@ -64,7 +64,7 @@ public class LoadGameServlet extends HttpServlet {
                     friend.setState(UserAccount.State.PLAYING);
                     friend.setGame(game);
                     friend.setFriend(user);
-                    resp.sendRedirect("chessonline/game");
+                    resp.sendRedirect("/game");
                     return;
                 }
             }
@@ -81,7 +81,7 @@ public class LoadGameServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserAccount user = (UserAccount) req.getSession().getAttribute("user");
         if (user == null) {
-            resp.sendRedirect("/chessonline/login");
+            resp.sendRedirect("/login");
         } else {
             List<ChessGame.PackedChessGame> games = DbHelper.savedGames(user.getId());
             if (games.isEmpty()) {

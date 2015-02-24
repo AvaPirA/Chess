@@ -21,10 +21,10 @@ public class GameServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserAccount user = (UserAccount) (req.getSession().getAttribute("user"));
         if (user == null) {
-            resp.sendRedirect("/chessonline/login");
+            resp.sendRedirect("/login");
         } else {
             if (user.getState() != UserAccount.State.PLAYING) {
-                resp.sendRedirect("/chessonline/start");
+                resp.sendRedirect("/start");
                 return;
             }
             ChessGame game = user.getGame();
