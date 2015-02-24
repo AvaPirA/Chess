@@ -9,7 +9,7 @@
 
 <body>
     <div>
-        <form action="/chessonline/register" method="post">
+        <form action="/register" method="post">
             <input name="login" value="Login" autofocus><br>
             <c:if test="${duplicateLogin}"><div class="error">Login already in use. Choose another.</div></c:if>
             <c:if test="${emptyLogin}"><div class="error">Login can not be empty.</div></c:if>
@@ -21,7 +21,7 @@
         </form>
     </div>
     <c:if test="${not empty fail and not fail}">
-        You've been successfully registered! Now you may go <a href="/chessonline/start.jsp">further</a>
+        You've been successfully registered! Now you may go <a href="/start">further</a>
     </c:if>
 </body>
 

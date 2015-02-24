@@ -10,11 +10,11 @@
     <c:set var="ID" value="${sessionScope.id}"/>
     Hello, <b>${sessionScope.user.login}</b>!
 
-    <form action="/chessonline/start" method="POST">
+    <form action="/start" method="POST">
         <input type="submit" value="Find!">
         <input type="hidden" name="action" value="find">
     </form>
-    <form action="/chessonline/login" method="POST">
+    <form action="/login" method="POST">
             <input type="submit" value="Log out">
             <input type="hidden" name="action" value="logout">
     </form>
@@ -42,7 +42,7 @@
                             <td>${friend.login}</td>
                             <td>${friend.stateInt}</td>
                             <td>
-                                <form action="/chessonline/start" method="post"><input type="submit"value="Play">
+                                <form action="/start" method="post"><input type="submit"value="Play">
                                 <input type="hidden"name="id"value=${friend.id}>
                                 <input type="hidden"name="action"value="play"></form>
                         </tr>
@@ -66,7 +66,7 @@
                                 <td>${user.login}</td>
                                 <td>${user.stateInt}</td>
                                 <td>
-                                    <form action="/chessonline/start" method="post"><input type="submit"value="Play">
+                                    <form action="/start" method="post"><input type="submit"value="Play">
                                     <input type="hidden"name="id"value=${user.id}>
                                     <input type="hidden"name="action"value="play"></form>
                             </tr>
@@ -75,7 +75,7 @@
             </table>
         </p>
     </c:if>
-    <form action="/chessonline/start" method="post">
+    <form action="/start" method="post">
     <input type="submit"value="Load">
     <input type="hidden"name="action"value="load"></form>
 </body>

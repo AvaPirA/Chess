@@ -26,7 +26,7 @@ public class UserAccount {
 
     public UserAccount(String login, String password, boolean register) throws LoginException {
         this.login = login;
-        this.passwordHash = hash(password);
+        this.passwordHash = hash(login, password);
         if (register) {
             id = DbHelper.tryRegister(login, passwordHash);
             if (id == -1) {
@@ -116,16 +116,21 @@ public class UserAccount {
     /**
      * Default djb2 hash alghoritm
      *
-     * @param str input string
+     * @param pass input string
      *
      * @return hash of input string
      */
-    private long hash(String str) {
+    private static long hash(String login, String pass) {
         long hash = 5381;
-        char[] chars = SALT.concat(str).concat(login.toLowerCase(Locale.ENGLISH)).toCharArray();
+        char[] chars = SALT.concat(pass).concat(login.toLowerCase(Locale.ENGLISH)).toCharArray();
         for (char c : chars) {
             hash = ((hash << 5) + hash) + c; //hash * 33 + c;
         }
+        //to avoid similarity of hashes of same-length login+pass strings
+        char last = login.charAt(login.length() - 1);
+        int index = last % login.length();
+        char pivot = login.charAt(index);
+        hash <<= (pivot % 5);
         return hash;
     }
 
@@ -137,5 +142,10 @@ public class UserAccount {
     public void exit() {
         playOffers.clear();
         state = State.NOT_PLAYING;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(hash("ad", "qwed"));
+        System.out.println(hash("йц", "ййцк"));
     }
 }

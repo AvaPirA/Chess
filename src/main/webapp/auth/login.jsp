@@ -14,7 +14,7 @@
                 Wrong login or password. Check your input.
             </div>
         </c:if>
-        <form action="/chessonline/login" method="post">
+        <form action="/login" method="post">
             <input name="login" value="Login" autofocus><br/>
             <input type="password" name="password" value="Password"><br/>
             <input type="hidden" name="action" value="signin">
@@ -28,7 +28,7 @@
     </c:if>
     <div>
         Not registered?
-        <form action="/chessonline/login" method="post">
+        <form action="/login" method="post">
             <input type="submit" value="Sign Up">
             <input type="hidden" name="action" value="signup">
         </form>
