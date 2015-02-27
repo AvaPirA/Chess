@@ -18,7 +18,7 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserAccount user = (UserAccount) req.getSession().getAttribute("user");
         if (user != null) {
-            resp.sendRedirect("/start");
+            resp.sendRedirect("/chess/start");
             return;
         }
         fwd(req, resp);
@@ -28,14 +28,14 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         if ("signup".equals(action)) {
-            resp.sendRedirect("/register");
+            resp.sendRedirect("/chess/register");
         } else if ("signin".equals(action)) {
             String login = req.getParameter("login");
             String password = req.getParameter("password");
             try {
                 UserAccount user = new UserAccount(login, password, false);
                 req.getSession().setAttribute("user", user);
-                resp.sendRedirect("/start");
+                resp.sendRedirect("/chess/start");
             } catch (LoginException e) {
                 req.setAttribute("fail", true);
                 fwd(req, resp);

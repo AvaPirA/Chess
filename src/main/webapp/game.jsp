@@ -52,11 +52,11 @@
         Turn <i>#${user.game.turnCount}</i><br>
         Your opponent: <b>${user.opponent.login}</b>.${user.opponent.id}
     </p>
-    <form action="/game" method="POST">
+    <form action="<c:url value="/chess/game"/>" method="POST">
         <p><input type="submit" name="save" value="Save">
         <input type="hidden" name="action" value="save">
     </form>
-    <form action="/game" method="POST">
+    <form action="<c:url value="/chess/game"/>" method="POST">
         <p><input type="submit" name="save" value="Exit">
         <input type="hidden" name="action" value="exit">
     </form>

@@ -49,7 +49,7 @@ public class RegistrationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserAccount user = (UserAccount) req.getSession().getAttribute("user");
         if (user != null) {
-            resp.sendRedirect("/start");
+            resp.sendRedirect("/chess/start");
             return;
         }
         req.getRequestDispatcher(JASPER).forward(req, resp);

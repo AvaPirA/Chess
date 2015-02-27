@@ -29,11 +29,11 @@
                     <td>${game.whiteId}</td> </c:otherwise>
                 </c:choose>
                 <td>
-                    <form action="/load" method="post">
+                    <form action="<c:url value="/chess/load"/>" method="post">
                     <input type="submit"value="Load">
                     <input type="hidden"name="id"value=${game.id}>
                     <input type="hidden"name="action"value="load"></form>
-                    <form action="/load" method="post">
+                    <form action="<c:url value="/chess/load"/>" method="post">
                     <input type="submit"value="Delete">
                     <input type="hidden"name="id"value=${game.id}>
                     <input type="hidden"name="action"value="delete"></form>

@@ -15,9 +15,9 @@ public class StartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserAccount user = (UserAccount) (req.getSession().getAttribute("user"));
         if (user == null) {
-            resp.sendRedirect("/login");
+            resp.sendRedirect("/chess/login");
         } else if (user.getState() == UserAccount.State.PLAYING) {
-            resp.sendRedirect("/game");
+            resp.sendRedirect("/chess/game");
         } else {
             if (user.getState() == UserAccount.State.SEARCHING) {
                 resp.setIntHeader("Refresh", 5);
@@ -31,9 +31,9 @@ public class StartServlet extends HttpServlet {
         String action = req.getParameter("action");
         UserAccount currentUser = (UserAccount) (req.getSession().getAttribute("user"));
         if (currentUser == null) {
-            resp.sendRedirect("/login");
+            resp.sendRedirect("/chess/login");
         } else if (currentUser.getState() == UserAccount.State.PLAYING) {
-            resp.sendRedirect("/game");
+            resp.sendRedirect("/chess/game");
         } else if ("find".equals(action)) {
             currentUser.setState(UserAccount.State.SEARCHING);
             Scope.getWaiters(req.getSession().getServletContext()).add(currentUser);
@@ -50,14 +50,14 @@ public class StartServlet extends HttpServlet {
             }
             if (friend != null) {
                 if (friend.addOffer(currentUser)) {
-                    resp.sendRedirect("/game");
+                    resp.sendRedirect("/chess/game");
                     return;
                 }
                 req.setAttribute("friend", friend.getLogin().concat(".").concat(Integer.toString(friendId)));
             }
             fwd(req, resp);
         } else if ("load".equals(action)) {
-            resp.sendRedirect("/load");
+            resp.sendRedirect("/chess/load");
         }
     }
 }
