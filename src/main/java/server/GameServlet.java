@@ -48,10 +48,10 @@ public class GameServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserAccount user = (UserAccount) (req.getSession().getAttribute("user"));
         if (user == null) {
-            resp.sendRedirect("/chessonline/login");
+            resp.sendRedirect("/login");
         } else {
             if (user.getState() != UserAccount.State.PLAYING) {
-                resp.sendRedirect("/chessonline/start");
+                resp.sendRedirect("/start");
                 return;
             }
             String action = req.getParameter("action");
@@ -68,7 +68,7 @@ public class GameServlet extends HttpServlet {
             } else if ("exit".equals(action)) {
                 user.getOpponent().exit();
                 user.exit();
-                resp.sendRedirect("/chessonline/start");
+                resp.sendRedirect("/start");
                 return;
             }
             fwd(req, resp);
