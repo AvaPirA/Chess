@@ -34,13 +34,11 @@ body{
     background: url(../images/bg.jpg) no-repeat fixed center;
     background-size: cover;
 }
-.message.warning  {
+.message.warning {
     background: rgba(255, 255, 255, 0.33);
-    -moz-box-shadow: 0 0 0 3px rgba(56, 41, 32, 0.25);
-    -webkit-box-shadow: 0 0 0 3px rgba(56, 41, 32, 0.25);
     box-shadow: 0 0 0 3px rgba(56, 41, 32, 0.25);
-    margin:9% auto 0;
-    width: 26%;
+    margin: 9% auto;
+    min-width: 26%;
 }
 .message-head {
     padding: 1.5em 0;
@@ -57,46 +55,28 @@ form {
     padding: 2.5em 2em;
     background: #F2F2F2;
 }
-form li{
+form p{
     border: 2px ridge rgba(187, 185, 189, 0.11);
     border-radius: 0.3em;
-    -webkit-border-radius:0.3em;
-    -moz-border-radius:0.3em;
-    -o-border-radius:0.3em;
-    text-align: left;
-    list-style:none;
     margin-bottom:12px;
     background:#F0EEF0;
+    position: relative;
 
 }
-.icon{
-    background:url(../images/icons.png)  no-repeat 0 0;
-    height:30px;
-    width:30px;
-    display: block;
-    float: right;
-    margin: 12px 9px 9px 0;
-}
-.user{
-    background: url(../images/icons.png) no-repeat 7px 1px;
-
-}
-.lock{
-    background: url(../images/icons.png) no-repeat -26px 1px;
-}
-
 input[type="text"], input[type="password"] {
     font-family: 'Droid Sans', sans-serif;
-    padding: 0.5em 1em 0.5em 1em;
+    width: 100%;
+    padding: 0.5em 7%;
     color: #B8B8B8;
     font-size:20px;
     outline: none;
     background: none;
     border:none;
+    transition: color 0.2s;
 }
 input[type="text"]:hover, input[type="password"]:hover{
     color:#9E61A3;
-
+    transition: color 0.2s;
 }
 .submit h4 a{
     float:left;
@@ -106,9 +86,11 @@ input[type="text"]:hover, input[type="password"]:hover{
     font-family: 'Droid Sans', sans-serif;
     margin-top: 15px;
     margin-left: 21px;
+    transition: color 0.2s ease ;
 }
 .submit h4 a:hover{
     color: #8d4294;
+    transition: color 0.2s ease;
 }
 .errBox {
     color: #e5045b;
@@ -144,39 +126,13 @@ input[type="submit"] {
     -webkit-border-radius:0.5em;
     -moz-border-radius:0.5em;
     -o-border-radius:0.5em;
+    transition: color 0.2s ease;
 }
 input[type="submit"]:hover {
     background: #fff;
     color:#6C496F;
     border:2px solid #6C496F;
-}
-/*----*/
-/* footer */
-.footer{
-    position: absolute;
-    bottom: 76px;
-    left: 45%;
-}
-.footer p{
-    position:relative;
-    font-family: 'Droid Sans', sans-serif;
-    color:#fff;
-    display: block;
-    font-size:1.2em;
-    font-weight: 400;
-    text-align:center;
-    padding-top:2em;
-}
-.footer p a{
-    color:#000;
-    transition: all 0.5s ease-out;
-    -webkit-transition: all 0.5s ease-out;
-    -moz-transition: all 0.5s ease-out;
-    -ms-transition: all 0.5s ease-out;
-    -o-transition: all 0.5s ease-out;
-}
-.footer p a:hover{
-    color:#fff
+    transition: color 0.2s ease;
 }
 .message {
     box-shadow: 0 0 0 1px rgba(0,0,0,0.2) inset, 0 1px 0 rgba(255,255,255,0.1) inset, 0 1px 2px rgba(0,0,0,0.4);
@@ -184,7 +140,7 @@ input[type="submit"]:hover {
 }
 .warning {
     text-align: center;
-    margin: 14% auto;
+    margin: 9% auto;
     width: 280px;
     background: rgba(82, 97, 97, 0.68);
     border-radius: 6px;
