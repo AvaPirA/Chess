@@ -41,7 +41,6 @@
                                 }
                                 return false;
                             });
-                            showErrorBox("Client error. Try again please");
                             return false;
                         } else showErrorBox("Password is too short");
                     } else showErrorBox("Passwords are not equal");
