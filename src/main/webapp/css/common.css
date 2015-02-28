@@ -82,7 +82,7 @@ form li{
 
 }
 .lock{
-    background: url(../images/icons.png) no-repeat -22px 1px;
+    background: url(../images/icons.png) no-repeat -26px 1px;
 }
 
 input[type="text"], input[type="password"] {
@@ -115,7 +115,7 @@ input[type="text"]:hover, input[type="password"]:hover{
     padding-top: 0;
     max-height: 0;
     opacity: 0;
-    transition: opacity 0.75s ease-in-out,  padding-top 1s , max-height 0.5s ;
+    transition: opacity 0.75s ease-in-out,  padding-top 1s , max-height 0.5s;
 }
 .errBox-change {
     padding-top: 2em;

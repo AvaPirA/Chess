@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        if ("signin".equals(action)) {
+        if ("SIGN_IN".equals(action)) {
             String login = req.getParameter("login");
             String password = req.getParameter("password");
             try {
