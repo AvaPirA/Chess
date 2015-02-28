@@ -13,36 +13,27 @@ public class RegistrationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         String action = req.getParameter("action");
-        if ("register".equals(action)) {
+        if ("REGISTER".equals(action)) {
             String login = req.getParameter("login");
             String password = req.getParameter("password");
             boolean fail = false;
-            if (password.length() < 3) {
+            if (password.length() < 3 || login.length() == 0 || login.contains(" ")) {
                 fail = true;
-                req.setAttribute("shortPassword", true);
-            }
-            if (login.length() == 0) {
-                fail = true;
-                req.setAttribute("emptyLogin", true);
-            }
-            if (login.contains(" ")) {
-                fail = true;
-                req.setAttribute("spacesInLogin", true);
             }
             if (!fail) {
                 try {
                     UserAccount newAccount = new UserAccount(login, password, true);
                     req.getSession().setAttribute("user", newAccount);
+                    resp.getWriter().write("OK");
                 } catch (LoginException e) {
-                    fail = true;
-                    req.setAttribute("duplicateLogin", true);
+                    resp.getWriter().write("FAIL_REG");
                 }
+            } else {
+                resp.getWriter().write("FAIL_REQ");
             }
-            req.setAttribute("fail", fail);
-        } //else it's "signup" from login.jsp
-        req.getRequestDispatcher(JASPER).forward(req, resp);
+            resp.getWriter().flush();
+        }
     }
 
     @Override

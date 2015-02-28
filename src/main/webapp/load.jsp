@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Load game</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
+    <%--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">--%>
 </head>
 
 <body>

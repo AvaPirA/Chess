@@ -27,22 +27,23 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        if ("signup".equals(action)) {
-            resp.sendRedirect("/chess/register");
-        } else if ("signin".equals(action)) {
+        if ("SIGN_IN".equals(action)) {
             String login = req.getParameter("login");
             String password = req.getParameter("password");
             try {
                 UserAccount user = new UserAccount(login, password, false);
                 req.getSession().setAttribute("user", user);
-                resp.sendRedirect("/chess/start");
+                resp.getWriter().write("OK");
             } catch (LoginException e) {
-                req.setAttribute("fail", true);
-                fwd(req, resp);
+                resp.getWriter().write("FAIL");
             }
+            resp.getWriter().flush();
         } else if ("logout".equals(action)) {
             req.getSession().invalidate();
             fwd(req, resp);
+        } else {
+            resp.getWriter().write("Server received corrupted data. Try again");
+            resp.getWriter().flush();
         }
     }
 }
