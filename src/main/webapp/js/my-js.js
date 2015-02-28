@@ -12,8 +12,8 @@ function hideErrorBox() {
 function nullifyPasswordL() {
     document.forms["loginForm"].elements.namedItem("password").value = "";
 }function nullifyPasswordR() {
-    document.forms["loginForm"].elements.namedItem("password1").value = "";
-    document.forms["loginForm"].elements.namedItem("password2").value = "";
+    document.forms["registerForm"].elements.namedItem("password1").value = "";
+    document.forms["registerForm"].elements.namedItem("password2").value = "";
 }
 function submitLogin() {
     var inputs = document.forms["loginForm"].elements;
